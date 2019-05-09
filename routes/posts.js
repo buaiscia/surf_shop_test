@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
+/* GET post index /posts */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Surf shop - Home' });
+    res.send('/posts');
 });
 
 module.exports = router;
