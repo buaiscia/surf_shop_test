@@ -1,0 +1,16 @@
+<h1>Post index</h1>
+
+<% posts.forEach(function(post) { %>
+    <div>
+        <h2><%= post.title %></h1>
+        <div>
+            <p><%= post.price %></p>
+        </div>
+        <div>
+            <p><%= post.description %></p>
+        </div>
+        <div>
+            <p><%= post.location %></p>
+        </div>
+    </div>
+<% }); %>
