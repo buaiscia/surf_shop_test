@@ -1,11 +1,14 @@
 <H1>NEW POST</H1>
 
-<form action="/posts" method="POST">
+<form action="/posts" method="POST" enctype="multipart/form-data">
     <div>
         <INPUT type="text" name="post[title]" placeholder="Title"></INPUT>
     </div>
     <div>
         <INPUT type="text" name="post[price]" placeholder="Price"></INPUT>
+    </div>
+    <div>
+        <input type="file" accept="image/*" name="images" multiple />
     </div>
     <div>
         <textarea name="post[description]" placeholder="Description"></textarea>

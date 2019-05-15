@@ -8,6 +8,12 @@
 <div>
     <p><%= post.location %></p>
 </div>
+<div>
+    <% post.images.forEach(function(image) {%>
+        <img src="<%= image.url%>" alt="One kind of image" width="200px">
+    <% });%>
+
+</div>
 <div><a href="/posts/<%= post.id %>/edit">
     <button>
             Edit post
