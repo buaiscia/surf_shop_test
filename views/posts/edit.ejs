@@ -8,6 +8,12 @@
         <INPUT type="text" name="post[price]" placeholder="Price" value="<%= post.price %>"></INPUT>
     </div>
     <div>
+        <input type="file" accept="image/*" name="images" multiple />
+        <% post.images.forEach(function(image) {%>
+            <img src="<%= image.url% >" alt="One kind of image" width="50px">
+        <% });%>
+    </div>
+    <div>
         <textarea name="post[description]" placeholder="Description"><%= post.description %></textarea>
     </div>
     <div>
