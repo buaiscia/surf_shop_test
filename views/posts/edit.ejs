@@ -1,6 +1,6 @@
 <H1>EDIT POST</H1>
 
-<form action="/posts/<%= post.id %>?_method=PUT" method="POST">
+<form action="/posts/<%= post.id %>?_method=PUT" method="POST" id="postEditForm">
     <div>
         <INPUT type="text" name="post[title]" placeholder="Title" value="<%= post.title %>"></INPUT>
     </div>
@@ -8,10 +8,14 @@
         <INPUT type="text" name="post[price]" placeholder="Price" value="<%= post.price %>"></INPUT>
     </div>
     <div>
-        <input type="file" accept="image/*" name="images" multiple />
-        <% post.images.forEach(function(image) {%>
-            <img src="<%= image.url% >" alt="One kind of image" width="50px">
-        <% });%>
+        <input type="file" id="imageUpload" accept="image/*" name="images" multiple />
+        <div>
+            <% post.images.forEach(function(image, i) {%>
+                <img src="<%= image.url %>" alt="One kind of image" width="100px">
+                <label for="image<%= i %>">Delete?</label>
+                <input type="checkbox" name="deleteImage" class="imageDeleteCheckbox" id="image<%= i %>" value="<% image.public_id %>">
+            <% }) %>
+        </div>
     </div>
     <div>
         <textarea name="post[description]" placeholder="Description"><%= post.description %></textarea>
@@ -22,4 +26,23 @@
 
     <input type="submit">
 </form>
+
+<script>
+
+    let postEditForm = document.getElementById('postEditForm');
+    postEditForm.addEventListener('submit', function(event){
+        //find length of uploaded images
+        let imageUpload = document.getElementById('imageUpload').files.length;
+        //find total number of existing images
+        let existingImgs = document.querySelectorAll('.imageDeleteCheckbox').length;
+        // find total number of potential deletions
+        let imgDeletion = document.querySelectorAll('.imageDeleteCheckbox:checked').length;
+        let newTotal = existingImgs - imgDeletion + imageUpload;
+        if(newTotal > 4) {
+            event.preventDefault();
+            let removalAmt = newTotal - 4
+            alert(`You need to remove at least ${removalAmt} image${removalAmt > 1 ? 's' : ''}!`);
+        }
+    })
+    </script>
 
