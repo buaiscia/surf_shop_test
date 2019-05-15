@@ -1,17 +1,17 @@
 <H1>EDIT POST</H1>
 
-<form action="/posts/<%= post.id %>?=_method=PUT" method="POST">
+<form action="/posts/<%= post.id %>?_method=PUT" method="POST">
     <div>
-        <INPUT type="text" name="title" placeholder="Title" value="<%= post.title %>"></INPUT>
+        <INPUT type="text" name="post[title]" placeholder="Title" value="<%= post.title %>"></INPUT>
     </div>
     <div>
-        <INPUT type="text" name="price" placeholder="Price" value="<%= post.price %>"></INPUT>
+        <INPUT type="text" name="post[price]" placeholder="Price" value="<%= post.price %>"></INPUT>
     </div>
     <div>
-        <textarea name="description" placeholder="Description"><%= post.description %></textarea>
+        <textarea name="post[description]" placeholder="Description"><%= post.description %></textarea>
     </div>
     <div>
-        <INPUT type="text" name="location" placeholder="Location" value="<%= post.location %>"></INPUT>
+        <INPUT type="text" name="post[location]" placeholder="Location" value="<%= post.location %>"></INPUT>
     </div>
 
     <input type="submit">
