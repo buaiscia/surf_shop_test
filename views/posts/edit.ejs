@@ -1,6 +1,6 @@
 <H1>EDIT POST</H1>
 
-<form action="/posts/<%= post.id %>?_method=PUT" method="POST" id="postEditForm">
+<form action="/posts/<%= post.id %>?_method=PUT" method="POST" id="postEditForm" enctype="multipart/form-data">
     <div>
         <INPUT type="text" name="post[title]" placeholder="Title" value="<%= post.title %>"></INPUT>
     </div>
@@ -13,7 +13,7 @@
             <% post.images.forEach(function(image, i) {%>
                 <img src="<%= image.url %>" alt="One kind of image" width="100px">
                 <label for="image<%= i %>">Delete?</label>
-                <input type="checkbox" name="deleteImage" class="imageDeleteCheckbox" id="image<%= i %>" value="<% image.public_id %>">
+                <input type="checkbox" name="deleteImages[]" class="imageDeleteCheckbox" id="image<%= i %>" value="<%= image.public_id %>">
             <% }) %>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <div>
         <INPUT type="text" name="post[location]" placeholder="Location" value="<%= post.location %>"></INPUT>
     </div>
-
+    
     <input type="submit">
 </form>
 
@@ -41,7 +41,7 @@
         if(newTotal > 4) {
             event.preventDefault();
             let removalAmt = newTotal - 4
-            alert(`You need to remove at least ${removalAmt} image${removalAmt > 1 ? 's' : ''}!`);
+            alert(`You need to remove at least ${removalAmt} (more) image${removalAmt > 1 ? 's' : ''}!`);
         }
     })
     </script>

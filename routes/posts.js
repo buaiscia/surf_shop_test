@@ -29,9 +29,9 @@ router.get('/:id', asyncErrorHandler(postShow));
 router.get('/:id/edit', asyncErrorHandler(postEdit));
 
 /* PUT post update /posts/:id */
-router.put('/:id', asyncErrorHandler(postUpdate));
+router.put('/:id', upload.array('images', 4), asyncErrorHandler(postUpdate));
 
 /* DELETE  post delete /posts/:id */
-router.delete('/:id',asyncErrorHandler(postDestroy));
+router.delete('/:id', asyncErrorHandler(postDestroy));
 
 module.exports = router;
